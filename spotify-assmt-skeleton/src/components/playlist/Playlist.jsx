@@ -2,7 +2,7 @@ import React from 'react'
 import './Playlist.css';
 import Tracklist from '../tracklist/Tracklist.jsx'
 
-function Playlist({playlistTracks, onRemove, playlistName, onNameChange}) {
+function Playlist({playlistTracks, onRemove, playlistName, onNameChange, onSave}) {
 
   // Function handleNameChange tracks the changes from the input
   function handleNameChange(event) {
@@ -11,13 +11,13 @@ function Playlist({playlistTracks, onRemove, playlistName, onNameChange}) {
 
   return (
     <div className="Playlist">
-      <input defaultValue={playlistName} onChange={handleNameChange} />
+      <input value={playlistName} onChange={handleNameChange} />
       {/* <!-- Add a TrackList component --> */}
       <Tracklist 
       searchResults={playlistTracks}
       onRemove={onRemove}
       />
-      <button className="Playlist-save">SAVE TO SPOTIFY</button>
+      <button className="Playlist-save" onClick={onSave}>SAVE TO SPOTIFY</button>
     </div>
   )
 }
